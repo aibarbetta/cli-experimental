@@ -94,7 +94,7 @@ replacements:
 | Field                | Required | Description                                        | Default         |
 | -----------:         | :----:   | -----------                                        | ----            |
 | `source`             | &#x2714; | The source of the value                            |                 |
-| `sourceValue`        | &#x2714; | The static value to be used as source              |                 |
+| `sourceValue`        | &#x2714; | A scalar value as source                           |                 |
 | `target`             | &#x2714; | The N fields to write the value to                 |                 |
 | `group`              |          | The group of the referent                          |                 |
 | `version`            |          | The version of the referent                        |                 |
@@ -119,13 +119,27 @@ but the source selection must resolve to a single resource.
 
 #### SourceValue
 `sourceValue` is a scalar field to be used as the replacement value.
-`sourceValue` and `source` are mutually exclusive fields and cannot be used to gether.
+\
+`source` and `sourceValue` are mutually exclusive fields and cannot be used to gether.
 
 #### Targets
 Replacements will be applied to all targets that are matched by the `select` field
 and are NOT matched by the `reject` field, and will be applied to all listed `fieldPaths`.
 \
-Subfields of `select` that are used to specify GVKNN, accept simple string values and regular expressions.
+Subfields of `select` and `reject` that are used to specify GVKNN, accept simple string values and regular expressions.
+
+##### Label and Annotation Selectors
+`labelSelector` and `annotationSelector` allow targeting resources based on labels and annotations respectively.
+
+
+Example of *equality-based* requirements syntax:
+```yaml
+labelSelector: "environment=production,tier=frontend"
+```
+and *set-based* requirements syntax:
+```yaml
+labelSelector: "environment in (production),tier notin (frontend, backend)"
+```
 
 ##### Reject
 The reject field is a selector that drops targets selected by select, overruling their selection.
