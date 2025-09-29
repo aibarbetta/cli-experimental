@@ -64,7 +64,7 @@ images:
   newName: my-registry/my-postgres
   newTag: v1
 - name: nginx
-  newTag: 1.8.0
+  newTag: "1.8.0"
 - name: my-demo-app
   newName: my-app
 - name: alpine
