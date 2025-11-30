@@ -172,7 +172,7 @@ spec:
         someName: someValue
 ```
 
-## Example 3 - templates modified
+## Example 3 - templates modified (selectors unmodified)
 
 ### File Input
 
@@ -238,7 +238,7 @@ spec:
         someName: someValue
 ```
 
-## Example 4 - volumeClaimTemplates modified
+## Example 4 - volumeClaimTemplates modified (selectors and templates unmodified)
 
 ### File Input
 
